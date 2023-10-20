@@ -7,9 +7,12 @@ const options = {
   },
 };
 
-export function fetchTrend() {
-  fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
+export async function fetchTrend() {
+  const response = await fetch(
+    'https://api.themoviedb.org/3/trending/all/day?language=en-US',
+    options
+  );
+  const dataFilms = await response.json();
+  return dataFilms;
 }
+
