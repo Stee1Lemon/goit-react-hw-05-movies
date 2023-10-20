@@ -1,5 +1,11 @@
+import { SearchMovie } from 'components/SearchMovie/SearchMovie';
+
 const Movies = () => {
-  return <div>Movies</div>;
+  return (
+    <main>
+      <SearchMovie />
+    </main>
+  );
 };
 
 export default Movies;

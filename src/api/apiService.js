@@ -16,3 +16,47 @@ export async function fetchTrend() {
   return dataFilms;
 }
 
+export async function fetchMovieByName(query) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
+    options
+  );
+  const dataFilms = await response.json();
+  return dataFilms;
+}
+
+export async function fetchMovieDetails(id) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+    options
+  );
+  const dataFilm = await response.json();
+  return dataFilm;
+}
+
+export async function fetchMovieCredits(id) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
+    options
+  );
+  const dataFilm = await response.json();
+  return dataFilm;
+}
+
+export async function fetchMovieReviews(id) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US`,
+    options
+  );
+  const dataFilm = await response.json();
+  return dataFilm;
+}
+
+export async function fetchPoster(path) {
+  const response = await fetch(
+    `https://image.tmdb.org/t/p/w500${path}`,
+    options
+  );
+  const dataFilm = await response.json();
+  return dataFilm;
+}

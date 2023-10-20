@@ -1,5 +1,5 @@
 import { fetchTrend } from 'api/apiService';
-import { TrendMovies } from 'components/TrendMovies/TrendMovies';
+import { MovieList } from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
@@ -18,7 +18,11 @@ const Home = () => {
     fetchTrendFilms();
   }, []);
 
-  return <TrendMovies movies={trendFilms} />;
+  return (
+    <main>
+      <MovieList movies={trendFilms} />
+    </main>
+  );
 };
 
 export default Home;
