@@ -1,11 +1,12 @@
 import { fetchMovieDetails, fetchPoster } from 'api/apiService';
 import { Suspense, useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const [moviePoster, setMoviePoster] = useState('');
+  const location = useLocation();
 
   useEffect(() => {
     async function getMovieDetails() {
@@ -24,6 +25,9 @@ const MovieDetails = () => {
   return (
     <main>
       <section>
+        <Link to={location.state.from}>
+          <button type="button">Go back</button>
+        </Link>
         <div>
           <img src={moviePoster} alt="" />
           <h2>{movie?.title}</h2>

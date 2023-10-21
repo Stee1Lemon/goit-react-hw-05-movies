@@ -17,18 +17,24 @@ const Reviews = () => {
     }
     showReviews();
   }, [movieId]);
-  console.log(reviews);
+
   return (
     <section>
       <ul>
-        {reviews?.map(review => {
-          return (
-            <li key={review.id}>
-              <h3>Author: {review.author}</h3>
-              <p>{review.content}</p>
-            </li>
-          );
-        })}
+        {reviews.length < 1 ? (
+          <li>
+            <p>There were no reviews to find</p>
+          </li>
+        ) : (
+          reviews?.map(review => {
+            return (
+              <li key={review.id}>
+                <h3>Author: {review.author}</h3>
+                <p>{review.content}</p>
+              </li>
+            );
+          })
+        )}
       </ul>
     </section>
   );
