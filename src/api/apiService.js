@@ -53,10 +53,21 @@ export async function fetchMovieReviews(id) {
 }
 
 export async function fetchPoster(path) {
-  const response = await fetch(
-    `https://image.tmdb.org/t/p/w500${path}`,
+  const configuration = await fetch(
+    `https://api.themoviedb.org/3/configuration`,
     options
   );
-  const dataFilm = await response.json();
-  return dataFilm;
+  const { images } = await configuration.json();
+  const imgLink = `${images.base_url}w300${path}`;
+  return imgLink;
+}
+
+export async function fetchActorImage(path) {
+  const configuration = await fetch(
+    `https://api.themoviedb.org/3/configuration`,
+    options
+  );
+  const { images } = await configuration.json();
+  // const imgLink = `${images.base_url}w185${path}`;
+  return images;
 }
