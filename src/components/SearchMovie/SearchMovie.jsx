@@ -2,6 +2,7 @@ import { fetchMovieByName } from 'api/apiService';
 import { MovieList } from '../MovieList/MovieList';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { SearchForm } from './SearchMovieStyles';
 
 export const SearchMovie = () => {
   const [searchMovies, setSearchMovies] = useState([]);
@@ -32,10 +33,10 @@ export const SearchMovie = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <SearchForm onSubmit={handleSubmit}>
         <input type="text" name="query" />
         <button type="submit">Find movie</button>
-      </form>
+      </SearchForm>
       {searchMovies && <MovieList movies={searchMovies} />}
     </>
   );

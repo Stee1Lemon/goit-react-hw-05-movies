@@ -1,6 +1,7 @@
 import { fetchMovieCredits, fetchActorImage } from 'api/apiService';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { CastInfo } from './CastStyles';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -26,14 +27,16 @@ const Cast = () => {
       <ul>
         {cast?.map(actor => {
           return (
-            <li key={actor.id}>
+            <CastInfo key={actor.id}>
               <img
                 src={`${confLink?.base_url}w185${actor.profile_path}`}
                 alt={actor.name}
               />
-              <p>{actor.name}</p>
-              <p>Character: {actor.character} </p>
-            </li>
+              <div>
+                <p>{actor.name}</p>
+                <p>Character: {actor.character} </p>
+              </div>
+            </CastInfo>
           );
         })}
       </ul>
