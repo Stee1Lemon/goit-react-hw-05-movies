@@ -52,22 +52,7 @@ export async function fetchMovieReviews(id) {
   return dataFilm;
 }
 
-export async function fetchPoster(path) {
-  const configuration = await fetch(
-    `https://api.themoviedb.org/3/configuration`,
-    options
-  );
-  const { images } = await configuration.json();
-  const imgLink = `${images.base_url}w300${path}`;
-  return imgLink;
-}
-
-export async function fetchActorImage(path) {
-  const configuration = await fetch(
-    `https://api.themoviedb.org/3/configuration`,
-    options
-  );
-  const { images } = await configuration.json();
-  // const imgLink = `${images.base_url}w185${path}`;
-  return images;
-}
+export const getImage = (url, size) =>
+  url
+    ? `https://image.tmdb.org/t/p/w${size.toString()}${url}`
+    : `https://placehold.jp/e6e7f4/242424/300x300.png?text=Image%20not%20found`;
